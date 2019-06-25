@@ -27,6 +27,25 @@ const CharacterSelect = (props) => {
 export default class CharacterForm extends Component {
     constructor(props){
         super(props);
+        this.form = React.createRef();
+        this.submit = this.submit.bind(this);
+    }
+
+    submit(){
+        const data = new FormData(this.form.current);
+        const object = {};
+        data.forEach((value, key) => {object[key] = value});
+        object.attributes = this.getAttributes();
+        const json = JSON.stringify(object);
+        fetch('http://192.168.168.131:4280/characters', {
+            method: 'POST',
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: json,
+        }).then(() => {
+            window.location.pathname = "/";
+        });
     }
 
     randomAttribute(){
@@ -45,12 +64,12 @@ export default class CharacterForm extends Component {
     render(){
         return (
           <Container>
-            <Form className="character-form">
+            <Form className="character-form" ref={this.form}>
               <CharacterInput label="Name" name="name" type="text"/>
               <CharacterInput label="Level" name="level" type="number"/>
               <CharacterSelect label="Race" name="race" options={["Elf","Human","Dwarf"]}/>
               <CharacterSelect label="Class" name="class" options={["Warrior", "Mage"]}/>
-              <Button>Save</Button>
+              <Button onClick={this.submit}>Save</Button>
             </Form>
           </Container>
         );
