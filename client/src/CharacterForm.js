@@ -29,6 +29,19 @@ export default class CharacterForm extends Component {
         super(props);
     }
 
+    randomAttribute(){
+      return ~~(Math.random() * (16 - 8) + 8);
+    }
+    getAttributes(){
+      return {
+        str: this.randomAttribute(),
+        dex: this.randomAttribute(),
+        con: this.randomAttribute(),
+        int: this.randomAttribute(),
+        wis: this.randomAttribute(),
+        cha: this.randomAttribute(),
+      };
+    }
     render(){
         return (
           <Container>
