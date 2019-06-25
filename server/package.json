@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-		"start": "LOG_LEVEL=silly JWT_SECRET=supersecret123 nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "start": "LOG_LEVEL=silly JWT_SECRET=supersecret123 nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
+    "http-proxy-agent": ">=2.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongo-sanitize": "^1.0.1",
     "mongoose": "^5.6.1",
