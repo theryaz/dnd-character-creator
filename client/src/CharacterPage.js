@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CharacterList from "./CharacterList";
 import CharacterForm from "./CharacterForm";
 
+import { Container, Row, Col, Button } from 'react-bootstrap';
+
 
 const fetchCharacters = () => {
     return Promise.resolve({
@@ -65,7 +67,7 @@ export default class CharacterPage extends Component {
             return (
                 <div>
                     <CharacterList chars={this.state.chars} />
-                    <button onClick={this.createNewHandler}>Create New Character</button>
+                    <Button onClick={this.createNewHandler}>Create New Character</Button>
                 </div>
             )
         }

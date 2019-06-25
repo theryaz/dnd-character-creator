@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./CharacterList.scss";
 
+import { Table } from 'react-bootstrap';
+
 export default class CharacterList extends Component {
     constructor(props){
         super(props);
@@ -11,16 +13,31 @@ export default class CharacterList extends Component {
         const chars = this.props.chars || [];
         return chars.map(char => {
             return (
-                <div key={char.uuid} className="character">{char.name} - lvl {char.level}</div>
+                <tr key={char.uuid} className="character">
+                  <td>{char.name}</td>
+                  <td>{char.level}</td>
+                  <td>{char.race}</td>
+                  <td>{char.class}</td>
+                </tr>
             );
         });
     }
 
     render(){
         return (
-            <div className="character-list">
+            <Table className="character-list">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level</th>
+                  <th>Race</th>
+                  <th>Class</th>
+                </tr>
+              </thead>
+              <tbody>
                 {this.renderCharacters()}
-            </div>
+              </tbody>
+            </Table>
         );
     }
 }
