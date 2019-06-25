@@ -5,7 +5,7 @@ import CharacterForm from "./CharacterForm";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 
-const fetchCharacters = () => {
+const fetchCharactersDummy = () => {
     return Promise.resolve({
         data: [
             {
@@ -42,6 +42,10 @@ const fetchCharacters = () => {
     });
 }
 
+const fetchCharacters = () => {
+    return fetch("http://192.168.168.131:4280/characters").then(res => res.json());
+}
+
 export default class CharacterPage extends Component {
     constructor(props) {
         super(props);
@@ -61,7 +65,9 @@ export default class CharacterPage extends Component {
     render() {
         if (this.state.page === "list") {
             if (this.state.chars === undefined) {
-                fetchCharacters().then(res => this.setState({ chars: res.data || [] }));
+                fetchCharacters().then(res => {
+                    this.setState({ chars: res.data || [] });
+                });
                 return <div>loading</div>;
             }
             return (
