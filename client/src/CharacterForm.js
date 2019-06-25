@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 
+import { Form, Container, Row, Col, Button } from 'react-bootstrap';
 
 const CharacterInput = (props) => {
     return (
-        <div className="character-field">
-            <label>{props.label}:</label>
-            <input type="text" name={props.name} />
-        </div>
+        <Form.Group className="character-field">
+            <Form.Label>{props.label}:</Form.Label>
+            <Form.Control type="text" name={props.name} />
+        </Form.Group>
     );
 }
 
 const CharacterSelect = (props) => {
     return (
-        <div className="character-field">
-            <input type="text" name={props.name} />
-        </div>
+        <Form.Group className="character-field">
+            <Form.Control type="text" name={props.name} />
+        </Form.Group>
     );
 }
 
@@ -25,10 +26,12 @@ export default class CharacterForm extends Component {
 
     render(){
         return (
-            <div className="character-form">
-                <CharacterInput label="Name" name="name"/>
-                <button>Save</button>
-            </div>
+          <Container>
+            <Form className="character-form">
+              <CharacterInput label="Name" name="name"/>
+              <Button>Save</Button>
+            </Form>
+          </Container>
         );
     }
 }
