@@ -7,7 +7,7 @@ try{
   let envs = loadEnvs(['MONGO_URL']);
   MONGO_URL = envs['MONGO_URL'];
 }catch(e){
-  MONGO_URL = 'mongodb+srv://dnd-api:Q92QgztFU3qhvE48@dnd-ybl8d.mongodb.net/dnd-character-creator?retryWrites=true&w=majority';
+  MONGO_URL = 'mongodb://localhost:27107/dnd-character-creator';
 }
 
 logger.info('Connecting to MongoDB: ' + MONGO_URL);
