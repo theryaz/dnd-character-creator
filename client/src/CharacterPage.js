@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CharacterList from "./CharacterList";
 import CharacterForm from "./CharacterForm";
+import { Link } from "react-router-dom";
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
@@ -46,50 +47,34 @@ const fetchCharacters = () => {
     return fetch("http://192.168.168.131:4280/characters").then(res => res.json());
 }
 
+
+
 export default class CharacterPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: "list",
             chars: undefined
         }
-        this.createNewHandler = this.createNewHandler.bind(this);
-    }
-
-    createNewHandler() {
-        this.setState({
-            page: "createnew"
-        });
     }
 
     render() {
-        if (this.state.page === "list") {
-            if (this.state.chars === undefined) {
-                fetchCharacters().then(res => {
-                    this.setState({ chars: res.data || [] });
-                });
-                return <div>loading</div>;
-            }
-            return (
-                <Container>
-                  <Row>
-                    <CharacterList chars={this.state.chars} />
-                  </Row>
-                  <Row>
-                    <Col>
-                      <Button onClick={this.createNewHandler}>Create New Character</Button>
-                    </Col>
-                  </Row>
-                </Container>
-            )
+        if (this.state.chars === undefined) {
+            fetchCharacters().then(res => {
+                this.setState({ chars: res.data || [] });
+            });
+            return <div>loading</div>;
         }
-
-        if(this.state.page === "createnew") {
-            return <CharacterForm />;
-        }
-
         return (
-            <div>fail</div>
-        );
+            <Container>
+                <Row>
+                    <CharacterList chars={this.state.chars} />
+                </Row>
+                <Row>
+                    <Col>
+                        <Button as={Link} to="/newcharacter">Create New Character</Button>
+                    </Col>
+                </Row>
+            </Container>
+        )
     }
 }
