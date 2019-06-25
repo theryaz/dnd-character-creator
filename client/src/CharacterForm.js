@@ -14,7 +14,12 @@ const CharacterInput = (props) => {
 const CharacterSelect = (props) => {
     return (
         <Form.Group className="character-field">
-            <Form.Control type="text" name={props.name} />
+          <Form.Label>{props.label}:</Form.Label>
+          <Form.Control as="select" name={props.name}>
+            {props.options.map(o => (
+              <option key={o}>{o}</option>
+            ))}
+          </Form.Control>
         </Form.Group>
     );
 }
@@ -29,6 +34,8 @@ export default class CharacterForm extends Component {
           <Container>
             <Form className="character-form">
               <CharacterInput label="Name" name="name"/>
+              <CharacterSelect label="Race" name="race" options={["Elf","Human","Dwarf"]}/>
+              <CharacterSelect label="Class" name="class" options={["Warrior", "Mage"]}/>
               <Button>Save</Button>
             </Form>
           </Container>
