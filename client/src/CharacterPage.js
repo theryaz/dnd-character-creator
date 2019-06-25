@@ -71,10 +71,16 @@ export default class CharacterPage extends Component {
                 return <div>loading</div>;
             }
             return (
-                <div>
+                <Container>
+                  <Row>
                     <CharacterList chars={this.state.chars} />
-                    <Button onClick={this.createNewHandler}>Create New Character</Button>
-                </div>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Button onClick={this.createNewHandler}>Create New Character</Button>
+                    </Col>
+                  </Row>
+                </Container>
             )
         }
 
