@@ -45,8 +45,7 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin([
-      { from: "public", to: "." },
-      { from: "node_modules/brain-of-isaac-commons/public", to: "." }
+      { from: "public", to: "." }
     ]),
   ],
   devServer: {

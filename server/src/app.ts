@@ -11,7 +11,6 @@ import { logger, asyncWrap } from './shared';
 
 const VERSION = require('../package.json').version;
 
-import UserRouter from './routes/user.router';
 import CharacterRouter from './routes/character.router';
 
 import { logRoute, authentication } from './middleware';
@@ -39,7 +38,6 @@ export class App{
 	private routes(): void{
 		logger.debug("App loading routes");
 		this.app.get('/healthcheck', (_, res: express.Response) => res.status(200).end());
-		this.app.use('/user', UserRouter.router);
 		this.app.use('/characters', CharacterRouter.router);
 		this.app.get('/', (_, res: express.Response) => {
 			res.json({

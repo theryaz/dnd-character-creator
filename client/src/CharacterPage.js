@@ -44,7 +44,7 @@ const fetchCharactersDummy = () => {
 }
 
 const fetchCharacters = () => {
-    return fetch("http://192.168.168.131:4280/characters").then(res => res.json());
+    return fetch("https://dnd-character-creator-api.herokuapp.com/characters").then(res => res.json());
 }
 
 

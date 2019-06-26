@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Character</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input type="text" [(ngModel)]="character.name" name="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Level</ion-label>
+    <ion-input type="number" [(ngModel)]="character.level" name="level"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Race</ion-label>
+    <ion-select [(ngModel)]="character.race" name="race">
+      <ion-select-option value="Dwarf" selected>Dwarf</ion-select-option>
+      <ion-select-option value="Elf">Elf</ion-select-option>
+      <ion-select-option value="Human">Human</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Class</ion-label>
+    <ion-select [(ngModel)]="character.class" name="class">
+      <ion-select-option value="Mage" selected>Mage</ion-select-option>
+      <ion-select-option value="Warrior">Warrior</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>STR</ion-label>
+          <ion-input type="number" [(ngModel)]="character.str" name="str"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>DEX</ion-label>
+          <ion-input type="number" [(ngModel)]="character.dex" name="dex"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <ion-label>CON</ion-label>
+            <ion-input type="number" [(ngModel)]="character.con" name="con"></ion-input>
+          </ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item>
+            <ion-label>WIS</ion-label>
+            <ion-input type="number" [(ngModel)]="character.wis" name="wis"></ion-input>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-item>
+            <ion-label>INT</ion-label>
+            <ion-input type="number" [(ngModel)]="character.int" name="int"></ion-input>
+          </ion-item>
+      </ion-col>
+      <ion-col>
+          <ion-item>
+            <ion-label>CHA</ion-label>
+            <ion-input type="number" [(ngModel)]="character.cha" name="cha"></ion-input>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="save()">
+      <ion-icon name="save"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

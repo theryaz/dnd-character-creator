@@ -21,8 +21,7 @@ export class CharacterRouter{
 	private routes(){
 		this.router.route("/")
 			.get(asyncWrap(async (req, res) => {
-				const { search } = req.query;
-				let characters = await CharacterController.getCharacters(search);
+				let characters = await CharacterController.getCharacters();
 				res.json({data: characters});
 			}));
 		this.router.route("/")

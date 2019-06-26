@@ -33,11 +33,11 @@ export default class CharacterForm extends Component {
 
     submit(){
         const data = new FormData(this.form.current);
-        const object = {};
+        let object = {};
         data.forEach((value, key) => {object[key] = value});
-        object.attributes = this.getAttributes();
+        object = Object.assign(object, this.getAttributes());
         const json = JSON.stringify(object);
-        fetch('http://192.168.168.131:4280/characters', {
+        fetch('https://dnd-character-creator-api.herokuapp.com/characters', {
             method: 'POST',
             headers: {
             "Content-Type": "application/json"

@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  server:
+    image: dnd-character-creator-api:1.0.0
+    build: server
+    ports:
+      - "4280:4280"
+    environment:
+      - JWT_SECRET=supersecret123
+      - LOG_LEVEL=info
+      - NODE_ENV=production

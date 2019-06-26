@@ -1,0 +1,7 @@
+{
+  "name": "dnd-character-creator-ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

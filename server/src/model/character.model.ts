@@ -1,44 +1,67 @@
-import uuid from 'uuid/v4';
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import Sequelize, { Model, DataTypes } from 'sequelize';
 
-import { logger } from '../shared';
-
-const CharacterSchema = new Schema({
-  uuid: { type: String, default: uuid },
-  name: { type: String },
-  level: { type: Number },
-  race: { type: String },
-  class: { type: String },
-  attributes: {
-    str: { type: Number },
-    dex: { type: Number },
-    con: { type: Number },
-    int: { type: Number },
-    wis: { type: Number },
-    cha: { type: Number },
-  },
-});
-
-CharacterSchema.index({uuid: 1}, {unique: true});
-
-export interface ICharacter extends mongoose.Document{
-  uuid: string,
+export interface ICharacter {
+  id: number,
   name: string,
   level: number,
   race: string,
   class: string,
-  attributes: {
-    str: number,
-    dex: number,
-    con: number,
-    int: number,
-    wis: number,
-    cha: number,
+  str: number,
+  dex: number,
+  con: number,
+  int: number,
+  wis: number,
+  cha: number
+};
+
+export class Character extends Model implements ICharacter {
+  public id!: number;
+  public name!: string;
+  public level!: number;
+  public race!: string;
+  public class!: string;
+  public str!: number;
+  public dex!: number;
+  public con!: number;
+  public int!: number;
+  public wis!: number;
+  public cha!: number
+}
+
+export const CharacterAttributes = {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING
+  },
+  level: {
+    type: Sequelize.INTEGER
+  },
+  race: {
+    type: Sequelize.STRING
+  },
+  class: {
+    type: Sequelize.STRING
+  },
+  str: {
+    type: Sequelize.INTEGER
+  },
+  dex: {
+    type: Sequelize.INTEGER
+  },
+  con: {
+    type: Sequelize.INTEGER
+  },
+  int: {
+    type: Sequelize.INTEGER
+  },
+  wis: {
+    type: Sequelize.INTEGER
+  },
+  cha: {
+    type: Sequelize.INTEGER
   }
 };
-export const Character = mongoose.model<ICharacter>('Character', CharacterSchema);
-
-Character.on('index', function() {
-  logger.info("Character Indexes Created");
-});
